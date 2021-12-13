@@ -1,32 +1,84 @@
-var dropeditem = "test";
 
-var word = {
+
+var Word = {
   word: "",
-  value: 0, 
-  isDefine: "false"
+  score: 0, 
+  isDefine: "false",
+  isDouble1: "false",
+  isDouble2: "false"
 }
 
-var Tiles ={
-  tile1: "",
-  tile2: "",
-  tile3: "",
-  tile4: "",
-  tile5: "",
-  tile6: "",
-  tile7: "",
+var defaultTiles; //jason object
+
+var TilesCount;
+
+var Tiles = [' ', ' ', ' ', ' ', ' ', ' ', ' '];
+
+var xml2;
+
+function updateScore(){
+  if(Word.isDouble1 === "true"){
+    Word.score = Word.score * 2;
+  }
+  $("#score").text("Score: " + Word.score);
 }
 
+
+//genereate a number between 0 -26
+// https://www.geeksforgeeks.org/how-to-generate-random-number-in-given-range-using-javascript/
+function randomNumber(){
+  return Math.floor(Math.random() * 26);
+
+}
+
+
+function randomize7Images(){
+
+  var num = randomNumber();
+
+  if(TilesCount.imageCount[num].amount > 0){
+
+    console.log(TilesCount.imageCount[num].src);
+    var str = String(TilesCount.imageCount[num].src)
+    console.log(str);
+    $("#tile1").attr("src", str);
+    
+  }
+
+}
+function updateWord(){
+  Word.word = '';
+  var score = 0;
+
+  for(var i = 0; i < 7; i++){
+    Word.word += Tiles[i];
+    for(var j = 0; j < 26; j++){
+      if(defaultTiles.pieces[j].letter === Tiles[i]){
+         score += defaultTiles.pieces[j].value;
+      } 
+    }
+  }
+
+  Word.score = score;
+  $("#word").text("Word: " + Word.word);
+  updateScore();
+
+}
 
 function makeDroppableTiles(){
 
+  letter = '-';
   $("#tile1").droppable({
     drop: function( event, ui ) {
-      console.log('drop');
+      letter = ' ';
       dropeditem = ui.draggable.prop("src");
       var length = dropeditem.length - 5;
       letter = dropeditem.charAt(length);
-      Tiles.tile1 = letter;
+      Tiles[0] = letter;
       console.log("tile1 " + " letter is " + letter);
+
+      updateWord();
+
 
       ui.draggable.css({ height : $(this).height() });
       $( this )
@@ -36,14 +88,19 @@ function makeDroppableTiles(){
     }
   });
 
+
+  //double word tile
   $("#tile2").droppable({
     drop: function( event, ui ) {
-      console.log('drop');
+      letter = ' ';
       dropeditem = ui.draggable.prop("src");
       var length = dropeditem.length - 5;
       letter = dropeditem.charAt(length);
-      Tiles.tile2 = letter;
+      Tiles[1] = letter;
       console.log("tile2 " + " letter is " + letter);
+      Word.isDouble1 = "true";
+
+      updateWord();
       $( this )
         .addClass( "ui-state-highlight" )
         .find( "p" )
@@ -53,12 +110,13 @@ function makeDroppableTiles(){
 
   $("#tile3").droppable({
     drop: function( event, ui ) {
-      console.log('drop');
+      letter = ' ';
       dropeditem = ui.draggable.prop("src");
       var length = dropeditem.length - 5;
       letter = dropeditem.charAt(length);
-      Tiles.tile3 = letter;
+      Tiles[2] = letter;
       console.log("tile3 " + " letter is " + letter);
+      updateWord();
       $( this )
         .addClass( "ui-state-highlight" )
         .find( "p" )
@@ -68,12 +126,13 @@ function makeDroppableTiles(){
 
   $("#tile4").droppable({
     drop: function( event, ui ) {
-      console.log('drop');
+      letter = ' ';
       dropeditem = ui.draggable.prop("src");
       var length = dropeditem.length - 5;
       letter = dropeditem.charAt(length);
-      Tiles.tile4 = letter;
+      Tiles[3] = letter;
       console.log("tile4 " + " letter is " + letter);
+      updateWord();
       $( this )
         .addClass( "ui-state-highlight" )
         .find( "p" )
@@ -84,12 +143,13 @@ function makeDroppableTiles(){
 
   $("#tile5").droppable({
     drop: function( event, ui ) {
-      console.log('drop');
+      letter = '-';
       dropeditem = ui.draggable.prop("src");
       var length = dropeditem.length - 5;
       letter = dropeditem.charAt(length);
-      Tiles.tile5 = letter;
+      Tiles[4] = letter;
       console.log("tile5 " + " letter is " + letter);
+      updateWord();
       $( this )
         .addClass( "ui-state-highlight" )
         .find( "p" )
@@ -99,12 +159,13 @@ function makeDroppableTiles(){
 
   $("#tile6").droppable({
     drop: function( event, ui ) {
-      console.log('drop');
+      letter = '-';
       dropeditem = ui.draggable.prop("src");
       var length = dropeditem.length - 5;
       letter = dropeditem.charAt(length);
-      Tiles.tile6 = letter;
+      Tiles[5] = letter;
       console.log("tile6 " + " letter is " + letter);
+      updateWord();
       $( this )
         .addClass( "ui-state-highlight" )
         .find( "p" )
@@ -114,12 +175,13 @@ function makeDroppableTiles(){
 
   $("#tile7").droppable({
     drop: function( event, ui ) {
-      console.log('drop');
+      letter = '-';
       dropeditem = ui.draggable.prop("src");
       var length = dropeditem.length - 5;
       letter = dropeditem.charAt(length);
-      Tiles.tile7 = letter;
+      Tiles[6] = letter;
       console.log("tile7 " + " letter is " + letter);
+      updateWord();
       $( this )
         .addClass( "ui-state-highlight" )
         .find( "p" )
@@ -131,20 +193,34 @@ function makeDroppableTiles(){
 }
 $( function() {
 
-  $( ".draggable" ).draggable();
-  makeDroppableTiles();
-
   var xml = new XMLHttpRequest();
-  xml.open('GET', "graphics_data/pieces.json");
+  xml.open('GET', "https://prerich.github.io/Scrabble/graphics_data/pieces.json");
   xml.onload = function(){
-    console.log(xml.responseText);
+    if(this.status == 200){
+    defaultTiles = JSON.parse(xml.responseText);
+    }
   };
   xml.send();
 
 
+  xml2 = new XMLHttpRequest();
+  xml2.open("GET", "https://prerich.github.io/Scrabble/graphics_data/imageCount.json");
+  xml2.onload = function(){
+    if(this.status == 200){
+      //console.log(xml2.responseText);
+      TilesCount = JSON.parse(xml2.responseText);
+     // TilesCount.imageCount[0].letter = JSON.stringify('a');
+      //console.log(TilesCount.imageCount[0].letter);
+      randomize7Images();
+      }
+  };
+    xml2.send();
+
+  
 
 
-
+  $( ".draggable" ).draggable();
+  makeDroppableTiles();
 
   } );
 
