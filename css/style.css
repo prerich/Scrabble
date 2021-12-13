@@ -1,0 +1,38 @@
+
+
+.draggable{
+    height: 70px;
+}
+
+
+div{
+    height: 100px;
+    padding: 25px;
+}
+
+#tileRack{
+    background-image: url("../graphics_data/scrabble-tile-holder-406774_640.png");
+    background-repeat: no-repeat;
+}
+
+#tile1, #tile3, #tile4, #tile5, #tile7{
+    background-image: url("../graphics_data/plain_tile.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 90px;
+    height: 90px;
+   
+}
+
+#tile2, #tile6{
+    background-image: url("../graphics_data/double_word_tile.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 90px;
+    height: 90px;
+   
+}
+
+#sboard div{
+    padding: 0;
+}
