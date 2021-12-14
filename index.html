@@ -43,6 +43,11 @@
 <div class="container-fluid">
     <h1>Lets play Scrabble</h1>
 
+    
+    <div class="row row-cols-2">
+        <h3 id="remaining">Tiles Remaing: 100</h3>
+        <h3 id="gameScore">Game Score: 0 </h3>
+    </div>
     <div id="sboard" class="row row-cols-7 ">
         <div id= "tile1" class="col-sm-1"></div>
         <div id= "tile2" class="col-sm-1"></div>
@@ -53,34 +58,48 @@
         <div id= "tile7" class="col-sm-1"></div>
     </div>
 
-    <div class="scoreboard">
-        <h3 id="word"></h3>
-        <h3 id ="score"></h3>
+    <div class="scoreboard row row-cols-2">
+        <h3 id="word">Word: </h3>
+        <h3 id ="score">Score: </h3>
     </div>
+
+    <div class="button-area row col-4">
+        <button id="submit" class="col">Submit Word</button>
+        <button id="randomize7" class="col">Randomize 7 Letters</button>
+    </div>
+
+    <form id="blankForm">
+        <label for="blankTile">Enter Character:</label><br>
+        <input type="text" id="blankValue" name="blankValue"><br>
+        <button id="blankSubmit" type="button">Enter</button>
+      </form>
 
     <br>
     <br>
     <div id="tileRack">
-    <img src="graphics_data\Scrabble_Tiles\Scrabble_Tile_O.jpg" id="tile1" class="draggable">
+    <img src="" id="letter1" class="draggable">
 
-    <img src="graphics_data\Scrabble_Tiles\Scrabble_Tile_O.jpg" id="tile2" class="draggable">
+    <img src="" id="letter2" class="draggable">
 
-    <img src="graphics_data\Scrabble_Tiles\Scrabble_Tile_T.jpg" id="tile3" class="draggable">
+    <img src="" id="letter3" class="draggable">
 
-    <img src="graphics_data\Scrabble_Tiles\Scrabble_Tile_B.jpg" id="tile4" class="draggable ">
+    <img src="" id="letter4" class="draggable ">
 
-    <img src="graphics_data\Scrabble_Tiles\Scrabble_Tile_U.jpg" id="tile5" class="draggable">
+    <img src="" id="letter5" class="draggable">
 
-    <img src="graphics_data\Scrabble_Tiles\Scrabble_Tile_N.jpg" id="tile6" class="draggable">
+    <img src="" id="letter6" class="draggable">
 
-    <img src="graphics_data\Scrabble_Tiles\Scrabble_Tile_N.jpg" id="tile7" class="draggable">
+    <img src="" id="letter7" class="draggable">
 
-    <img src="graphics_data\Scrabble_Tiles\Scrabble_Tile_Y.jpg" id="tile8" class="draggable">
+    </div>
 
+    <div class=" row">
+    <button id="restart" class="col-1">New Game</button>
     </div>
 </div>
   
-    <script src="js/drag-drop.js"></script>
+    <script src="js/myjs.js"></script>
+    <script src="js/Scrabble_Pieces_AssociativeArray_Jesse.js"></script>
 </body>
 </html>
 
