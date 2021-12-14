@@ -24,7 +24,8 @@
 	{"letter":"W", "src": "graphics_data/Scrabble_Tiles/Scrabble_Tile_W.jpg", "amount":2},
 	{"letter":"X", "src": "graphics_data/Scrabble_Tiles/Scrabble_Tile_X.jpg", "amount":1},
 	{"letter":"Y", "src": "graphics_data/Scrabble_Tiles/Scrabble_Tile_Y.jpg", "amount":2},
-	{"letter":"Z", "src": "graphics_data/Scrabble_Tiles/Scrabble_Tile_Z.jpg", "amount":1}
+	{"letter":"Z", "src": "graphics_data/Scrabble_Tiles/Scrabble_Tile_Z.jpg", "amount":1},
+	{"letter":"1", "src": "graphics_data/Scrabble_Tiles/Scrabble_Tile_1.jpg", "amount":2} 
 
 ],
 "creator": "Jennifer Robles"
