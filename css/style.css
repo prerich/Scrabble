@@ -1,18 +1,97 @@
+/*name: Jennifer Robles
+email: Jennifer_Robles@student.uml.edi
+date: 12-07-2021 - 12/17/21
+purpose: Styling my scrabble board
+        Used boostap also
+
+*/
+
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #CB997E; 
+    color: #FFE8D6;
+}
 
 
+h1{
+    margin: auto;
+    text-align: center;
+    padding-bottom: 23px;
+    border-bottom: 5px solid #FFE8D6 ;
+    background-color: #6B705C;
+    margin-top: 0;
+    padding-top: 30px;
+}
+
+
+/*all the letters images same size */
 .draggable{
     height: 70px;
 }
 
-
-div{
-    height: 100px;
-    padding: 25px;
+.button-area{
+    margin: auto;
+    width: 70%;
+    padding: 20px;
+}
+.btn{
+    width: 15%;
+    height: 60px;
+    margin: auto;
 }
 
+/* both scoreboard will have same design*/
+.gameScoreBoard, .scoreboard{
+    margin: auto;
+    font-size: 8px;
+    background-color: #6B705C;
+    margin-top: 20px;
+    margin-bottom: 2px;
+    padding-top: 10px;
+    width: 60%;
+    height: 40px;
+
+}
+
+.gameScoreBoard h3, .scoreboard h3{
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+
+
+
+/* centering the board */
+#sboard{
+    margin-left: 30%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+/*fixed size because i did not like bootstrap size of it */
+#blankForm .btn{
+    width: min-content;
+    height: min-content;
+}
+
+/* centering page */
+.content{
+    margin: auto;
+    text-align: center;
+    background-color: #CB997E;
+    padding: 20px;
+
+}
+
+
 #tileRack{
+    margin-left: 30%;
     background-image: url("../graphics_data/scrabble-tile-holder-406774_640.png");
     background-repeat: no-repeat;
+    background-position: center;
+    background-size: 600px;
+    margin: auto;
+    padding: 10px;
 }
 
 #tile1, #tile3, #tile4, #tile5, #tile7{
@@ -30,9 +109,14 @@ div{
     background-size: contain;
     width: 90px;
     height: 90px;
-   
+
 }
 
+
+#blankForm{
+    padding: 20px;
+    color: #FFE8D6;
+}
 #sboard div{
     padding: 0;
 }

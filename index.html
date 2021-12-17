@@ -2,53 +2,46 @@
 <!---
     name: Jennifer Robles
     email: Jennifer_Robles@student.uml.edi
-    date: 10-14-2021 - 11/17/21
-    purpose: Creates a form with 4 input values for user
-           to enter to fill out the parameters of a multupication
-           table. Miniumum Column is the smallest value for top
-           Maximum Column is the greatest number to go up to by 1's for top
-           and columns determines the width of the table
-           Miniumun Row is the smallest number for the side bara
-           Maxiumum Row determines the height of multpication table
-           Addition: included JQuery Validator plug in
+    date: 12-07-2021 - 12/17/21
+    purpose: Using Jquery Ui I created a game of Scrabble
+            has Drop and drag effects. Keeps track of scores,
+            letters use, and the distrubtion count of letters.
+            This is only a reflection of a one line scrabble board
+            with two bonus words tiles. Also, a tiny bit of Jquery 
+            Validator and Bootstrap. 
 -->
 <html lang="en">
 <head>
     <title>Scrabble</title>
     <meta charset="utf-8">
 
+    <!--Using bootstrap and JQUery css style sheet-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href = "https://code.jquery.com/ui/1.11.4/themes/pepper-grinder/jquery-ui.css" rel = "stylesheet">
 
+
     <link href= "css/style.css"  rel="stylesheet">
 
-
+    <!--Bootstraps, Jquery, Jquery UI, Jquery Validator-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
-
-    <!---
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="css/style.css" rel="stylesheet">
-
-     CDNs for jquery plugs in and my own custumization of validations-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/jquery.validate.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/additional-methods.min.js"></script>
-    <script src="js/form_validator.js"></script>
-    ---> 
 </head>
 <body>
-<div class="container-fluid">
+<div class="container-fluid content">
+
     <h1>Lets play Scrabble</h1>
 
-    
-    <div class="row row-cols-2">
+    <!--Scoreboard of OVERALL game here-->    
+    <div class="row row-cols-2 gameScoreBoard">
         <h3 id="remaining">Tiles Remaing: 100</h3>
         <h3 id="gameScore">Game Score: 0 </h3>
     </div>
-    <div id="sboard" class="row row-cols-7 ">
+
+    <!--Scrabble board one liner-->
+    <div id="sboard" class="row row-cols-7 row-cols-lg-7 row-cols-sm-8 ">
         <div id= "tile1" class="col-sm-1"></div>
         <div id= "tile2" class="col-sm-1"></div>
         <div id= "tile3" class="col-sm-1"></div>
@@ -58,48 +51,52 @@
         <div id= "tile7" class="col-sm-1"></div>
     </div>
 
+    <!--Scoreboard of current round-->
     <div class="scoreboard row row-cols-2">
         <h3 id="word">Word: </h3>
         <h3 id ="score">Score: </h3>
     </div>
 
+    <!--bUTTONS TO submit word and randomize your hand-->
     <div class="button-area row col-4">
-        <button id="submit" class="col">Submit Word</button>
-        <button id="randomize7" class="col">Randomize 7 Letters</button>
+        <button id="submit" class=" btn btn-success ">Submit Word</button>
+        <button id="randomize7" class="btn btn-primary ">Randomize All Letters</button>
     </div>
 
-    <form id="blankForm">
-        <label for="blankTile">Enter Character:</label><br>
-        <input type="text" id="blankValue" name="blankValue"><br>
-        <button id="blankSubmit" type="button">Enter</button>
-      </form>
-
-    <br>
-    <br>
-    <div id="tileRack">
+    <!--Where letter resides, src changes every round-->
+    <div id="tileRack" class="">
     <img src="" id="letter1" class="draggable">
 
-    <img src="" id="letter2" class="draggable">
+    <img src="" id="letter2" class="draggable ">
 
     <img src="" id="letter3" class="draggable">
 
-    <img src="" id="letter4" class="draggable ">
+    <img src="" id="letter4" class="draggable">
 
     <img src="" id="letter5" class="draggable">
 
-    <img src="" id="letter6" class="draggable">
+    <img src="" id="letter6" class="draggable ">
 
-    <img src="" id="letter7" class="draggable">
-
+    <img src="" id="letter7" class="draggable ">
     </div>
 
+    <!--form for the Blank tile button mimicks submit but will not reload-->
+    <form id="blankForm" class="">
+        <label for="blankTile">Enter One UpperCase Letter:</label><br>
+        <input type="text" id="blankValue" name="blankValue" class="form-text">
+        <button id="blankSubmit" type="button" class="btn btn-primary">Enter</button>
+      </form>
+
+
+    <!--Restart/New game Button-->
     <div class=" row">
-    <button id="restart" class="col-1">New Game</button>
+    <button id="restart" class=" btn btn-danger col-1">New Game</button>
     </div>
 </div>
   
-    <script src="js/myjs.js"></script>
+    <script src="js/scrabble.js"></script>
     <script src="js/Scrabble_Pieces_AssociativeArray_Jesse.js"></script>
+    <script src="js/blank_tile_validator.js"></script>
 </body>
 </html>
 
