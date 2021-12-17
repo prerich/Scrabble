@@ -25,7 +25,8 @@
 	{"letter":"X", "src": "graphics_data/Scrabble_Tiles/Scrabble_Tile_X.jpg", "amount":1},
 	{"letter":"Y", "src": "graphics_data/Scrabble_Tiles/Scrabble_Tile_Y.jpg", "amount":2},
 	{"letter":"Z", "src": "graphics_data/Scrabble_Tiles/Scrabble_Tile_Z.jpg", "amount":1},
-	{"letter":"_", "src": "graphics_data/Scrabble_Tiles/Scrabble_Tile__.jpg", "amount":2}
+	{"letter":"_", "src": "graphics_data/Scrabble_Tiles/Scrabble_Tile__.jpg", "amount":2} 
+
 ],
 "creator": "Jennifer Robles"
 }
