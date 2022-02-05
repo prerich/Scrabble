@@ -3,7 +3,7 @@ email: Jennifer_Robles@student.uml.edi
 date: 12-07-2021 - 12/17/21
 Homework 5:
 
-Hello due to finals I'm currently turning this in late by 3 hours. It is 3 am.
+Link to page: https://prerich.github.io/Scrabble/
 
 For this homework, I implemented a single line from the scrabble board. I used Jquery's validator, Drag, and drop UI features. 
 These were essentials for my programs because an item being dropped triggered a series of functions like a chain to update
